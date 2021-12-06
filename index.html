@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&display=swap" rel="stylesheet">
+  
+  <title>Frontend Mentor | Ping coming soon page</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    body{
+      margin: 0;
+      padding: 5px 0;
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    .container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 800px;
+    }
+    .container .logo{
+      height: 20px;
+      margin: 20px 0;
+    }
+    .container .header{
+      margin: 5px;
+      line-height: 35px;
+    }
+    .container .header .main-header{
+      color: hsl(0, 0%, 59%);
+      font-size: 30px;
+      font-weight: 300;
+      margin: 0;
+    }
+    .container .header .main-header .soon{
+      color: hsl(209, 33%, 12%);
+      font-weight: 700;
+    }
+    .container .header .second-header{
+      font-size: 13px;
+      margin: 0;
+    }
+    .container form{
+      margin: 10px 0;
+    }
+    .container form input{
+      width: 250px;
+      padding: 10px 15px;
+      border: 1px solid hsl(223, 100%, 88%);
+      border-radius: 30px;
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 12px;
+      color: hsl(223, 100%, 88%);
+    }
+    .container form button{
+      padding: 10px 30px;
+      border: none;
+      border-radius: 30px;
+      font-family: 'Libre Franklin', sans-serif;
+      font-size: 12px;
+      color: white;
+      background-color: hsl(223, 87%, 63%);
+    }
+    .container form button:hover{
+      background-color: hsl(223, 100%, 88%);
+    }
+    .container form .alert{
+      position: absolute;
+      margin: 5px 0 0 15px;
+      text-align: left;
+      font-style: italic;
+      font-size: 9px;
+      color: hsl(354, 100%, 66%);
+      display: none;
+    }
+    .container .illustration{
+      height: 250px;
+      margin: 35px 0;
+    }
+    .container .icon{
+      margin: 10px 0 5px 0;
+    }
+    .container .icon a{
+      text-decoration: none;
+      color: white;
+    }
+    .container .icon a ion-icon{
+      margin: 0 5px;
+      color: hsl(223, 100%, 88%);
+    }
+    .container .icon a ion-icon:hover{
+      color: hsl(223, 87%, 63%);
+    }
+    .container .copyright{
+      margin: 5px 0;
+      font-size: 10px;
+    }
+    .container .mobile{
+      display: none;
+    }
+    @media screen and (max-width: 375px) {
+      .container .mobile{
+        display: block;
+      }
+      .container .header{
+        margin: 5px;
+        line-height: 30px;
+      }
+      .container .header .main-header{
+        color: hsl(0, 0%, 59%);
+        font-size: 20px;
+        font-weight: 300;
+        margin: 0;
+      }
+      .container form{
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0;
+      }
+      .container form input{
+        margin: 0 0 20px 0;
+      }
+      .container form .alert{
+        /*display: block;*/
+        position: absolute;
+        margin: 40px 0 0 15px;
+      }
+      .container .illustration{
+        height: 200px;
+        margin: 35px 0;
+      }
+    }
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- <p class="mobile">mobile view</p> -->
+    <img class="logo" src="images/logo.svg" alt="logo">
+    <div class="header">
+      <p class="main-header">We are launching <span class="soon">soon!</span></p>
+      <p class="second-header">Subscribe and get notified</p>
+    </div>
+    <form id="my-form" action="#">
+      <input type="text" id="email" placeholder="Your email address...">
+      <button type="submit" value="submit">Notify Me</button>
+      <p class="alert"></p>
+    </form>
+    <img class="illustration" src="images/illustration-dashboard.png" alt="illustration-dashboard">
+    <div class="icon">
+      <a href="#" class="fb"><ion-icon name="logo-facebook" size="large"></ion-icon></a>
+      <a href="#" class="ig"><ion-icon name="logo-twitter" size="large"></ion-icon></a>
+      <a href="#" class="tw"><ion-icon name="logo-instagram" size="large"></ion-icon></a>
+    </div>
+    <p class="copyright">&copy; Copyright Ping. All rights reserved.</p>
+  </div>
+
+  <footer>
+    <p class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">Abdullah Al-Karim</a>.
+    </p>
+  </footer>
+
+  <script type="text/javascript">
+    const myform = document.querySelector('#my-form');
+    const email = document.querySelector('#email');
+    const alert = document.querySelector('.alert');
+    myform.addEventListener('submit', onSubmit);
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+    function onSubmit() {
+      if (email.value=='') {
+        alert.style.display='block';
+        alert.innerHTML='Whoops! It looks like you forgot to add your email';
+      }
+      else if (email.value.match(mailformat)) {
+        alert.style.display='none';
+      }
+      else{
+        alert.style.display='block';
+        alert.innerHTML='Please provide a valid email address';
+      }
+    }
+  </script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
